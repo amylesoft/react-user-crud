@@ -11,10 +11,9 @@ const actionTypes = {
     CREATE_USER_SUCCESSFULLY: 'create_user_successfully',
     DELETE_USER_SUCCESSFULLY: 'delete_user_successfully',
     UPDATE_USER_SUCCESSFULLY: 'update_user_for_array',
-    UPDATE_AGE: 'update_age',
-    SELECT_RADIO: 'select_radio',
-    SELECT_CHECKBOX: 'select_checkbox',
-    IS_LOADING: 'is_loading'
+    IS_USER_GET_AND_DELETE_LOADING: 'is_user_get_and_delete_loading',
+    IS_USER_CREATE_AND_UPDATE_LOADING: 'is_user_create_and_update_loading',
+    IS_DIALOG_OPEN_AND_CLOSE: 'is_dialog_open_and_close'
 }
 
 export default actionTypes;

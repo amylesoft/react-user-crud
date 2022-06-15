@@ -1,4 +1,3 @@
-
 import ActionTypes from "./types";
 
 const initialState = {
@@ -7,18 +6,13 @@ const initialState = {
         lastName: '',
         phoneNo: '',
     },
-    isUpdatButtonHide: false,
+    isUserCreateAndUpdate: false,
     numberIndex: '',
     userId: '',
     users: [],
-    age: '',
-    hobbies: '',
-    userCheck: {
-        cricket: false,
-        football: false,
-        tennis: false
-    },
-    isLoadingForApi: false
+    isUserGetAndDeleteLoading: false,
+    isUserCreateAndUpdateLoading: false,
+    isUserAddDialogVisible: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -30,15 +24,20 @@ const reducer = (state = initialState, action) => {
                 [action.key]: action.value
             }
         }
-        case ActionTypes.IS_LOADING: return {
+        case ActionTypes.IS_USER_GET_AND_DELETE_LOADING: return {
             ...state,
-            isLoadingForApi: action.loading
+            isUserGetAndDeleteLoading: action.loading
         }
-        case ActionTypes.UPDATE_AGE: return {
+        case ActionTypes.IS_BUTTON_LOADING: return {
             ...state,
-            age: action.value
+            isUserCreateAndUpdateLoading: action.loading
+        }
+        case ActionTypes.IS_DIALOG_OPEN_AND_CLOSE: return {
+            ...state,
+            isUserAddDialogVisible: action.dialog
         }
         case ActionTypes.CREATE_USER_SUCCESSFULLY:
+            state.isUserAddDialogVisible = false
             return {
                 ...state,
                 users: [...state.users, action.user],
@@ -57,7 +56,8 @@ const reducer = (state = initialState, action) => {
             ]
         }
         case ActionTypes.UPDATE_USER: {
-            state.isUpdatButtonHide = true
+            state.isUserCreateAndUpdate = true
+            state.isUserAddDialogVisible = true
             let users = state.users
             state.userId = action.user._id
             state.userForm = action.user
@@ -68,12 +68,13 @@ const reducer = (state = initialState, action) => {
             }
         }
         case ActionTypes.UPDATE_USER_SUCCESSFULLY: {
-            state.isUpdatButtonHide = false
+            state.isUserAddDialogVisible = false
+            state.isUserCreateAndUpdate = false
             let users = state.users
             users[state.numberIndex] = action.user
             return {
                 ...state,
-                users: users,
+                users: [...state.users],
                 userForm: {
                     firstName: '',
                     lastName: '',
@@ -87,17 +88,6 @@ const reducer = (state = initialState, action) => {
                 users: action.user
             }
         }
-        // case ActionTypes.SELECT_RADIO: return {
-        //     ...state,
-        //     hobbies: action.value
-        // }
-        // case ActionTypes.SELECT_CHECKBOX: return {
-        //     ...state,
-        //     userCheck: {
-        //         ...state.userCheck,
-        //         [action.key]: action.value
-        //     }
-        // }
         default: {
             return state;
         }

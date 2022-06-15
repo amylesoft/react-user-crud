@@ -59,28 +59,21 @@ export const getUserSuccessfully = (user) => {
         user: user
     }
 }
-export const updateAge = (value) => {
+export const isUserGetAndDeleteLoading = (loading) => {
     return {
-        type: actionTypes.UPDATE_AGE,
-        value: value
-    }
-}
-export const isLoading = (loading) => {
-    return {
-        type: actionTypes.IS_LOADING,
+        type: actionTypes.IS_USER_GET_AND_DELETE_LOADING,
         loading: loading
     }
 }
-// export const selectRadio = (value) => {
-//     return {
-//         type: actionTypes.SELECT_RADIO,
-//         value: value
-//     }
-// }
-// export const selectCheckBox = ({ key, value }) => {
-//     return {
-//         type: actionTypes.SELECT_CHECKBOX,
-//         key: key,
-//         value: value
-//     }
-// }
+export const isUserCreateAndUpdateLoading = (loading) => {
+    return {
+        type: actionTypes.IS_USER_CREATE_AND_UPDATE_LOADING,
+        loading: loading
+    }
+}
+export const isUserAddDialogVisible = (dialog) => {
+    return {
+        type: actionTypes.IS_DIALOG_OPEN_AND_CLOSE,
+        dialog: dialog
+    }
+}

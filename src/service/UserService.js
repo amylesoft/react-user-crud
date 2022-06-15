@@ -6,56 +6,39 @@ export default class UserService {
         this.http = new HttpCommon("users")
     }
 
-    findAll() {
-        return new Promise((resolve, reject) => {
-            this.http
-                .get()
-                .then((response) => {
-                    resolve(new ResponseWrapper(response).data)
-                })
-                .catch((error) => {
-                    reject(new ErrorWrapper(error))
-                })
-        })
+    findAll = async () => {
+        try {
+            const response = await this.http.get()
+            return new ResponseWrapper(response).data
+        } catch (error) {
+            new ErrorWrapper(error)
+        }
     }
 
-    update(id, data = {}) {
-        return new Promise((resolve, reject) => {
-            this.http
-                .patch(id, data)
-                .then((response) => {
-                    resolve(new ResponseWrapper(response).data)
-                })
-                .catch((error) => {
-                    reject(new ErrorWrapper(error))
-                })
-        })
+    update = async (id, data = {}) => {
+        try {
+            const response = await this.http.patch(id, data)
+            return new ResponseWrapper(response).data
+        } catch (error) {
+            new ErrorWrapper(error)
+        }
     }
 
-    create(data = {}) {
-        return new Promise((resolve, reject) => {
-            this.http
-                .post("", data)
-                .then((response) => {
-                    resolve(new ResponseWrapper(response).data)
-                })
-                .catch((error) => {
-                    console.log('error :>> ', error);
-                    reject(new ErrorWrapper(error))
-                })
-        })
+    create = async (data = {}) => {
+        try {
+            const response = await this.http.post("", data)
+            return new ResponseWrapper(response).data
+        } catch (error) {
+            new ErrorWrapper(error)
+        }
     }
 
-    delete(id) {
-        return new Promise((resolve, reject) => {
-            this.http
-                .delete(id)
-                .then((response) => {
-                    resolve(new ResponseWrapper(response).data)
-                })
-                .catch((error) => {
-                    reject(new ErrorWrapper(error))
-                })
-        })
+    delete = async (id) => {
+        try {
+            const response = await this.http.delete(id)
+            return new ResponseWrapper(response).data
+        } catch (error) {
+            new ErrorWrapper(error)
+        }
     }
 }
