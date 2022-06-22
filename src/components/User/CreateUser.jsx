@@ -17,11 +17,10 @@ import { Button } from '@mui/material';
 const schema = yup.object({
     firstName: yup.string().required(),
     lastName: yup.string().required(),
-    phoneNo: yup.number().positive().integer().required(),
+    phoneNo: yup.string().required('phoneNo is a required field').min(8, 'minimum 8 number required').max(12, 'maximum 12 number required'),
 }).required();
 
 const CreateUser = ({ user, updateForm, createUser, isUserCreateAndUpdate, setUserForm, isUserGetAndDeleteLoading, isUserCreateAndUpdateLoading, isUserAddDialogVisible, dialogOpenAndClose }) => {
-
 
     const { handleSubmit, reset, formState: { errors }, control } = useForm({
         resolver: yupResolver(schema)
@@ -36,6 +35,7 @@ const CreateUser = ({ user, updateForm, createUser, isUserCreateAndUpdate, setUs
                 reset()
             }}>
                 <DialogContent>
+
                     <div>
                         <Controller
                             name="firstName"
@@ -54,7 +54,7 @@ const CreateUser = ({ user, updateForm, createUser, isUserCreateAndUpdate, setUs
                                         updateForm({ key: 'firstName', value: e.target.value })
                                     }}></ElementInput>
                             )}
-                            rules={{ required: 'First name required' }}
+                            rules={{ required: true }}
                         />
                     </div>
 
@@ -76,7 +76,7 @@ const CreateUser = ({ user, updateForm, createUser, isUserCreateAndUpdate, setUs
                                         updateForm({ key: 'lastName', value: e.target.value })
                                     }}></ElementInput>
                             )}
-                            rules={{ required: 'Last name required' }}
+                            rules={{ required: true }}
                         />
 
                     </div>
@@ -99,11 +99,11 @@ const CreateUser = ({ user, updateForm, createUser, isUserCreateAndUpdate, setUs
                                         updateForm({ key: 'phoneNo', value: e.target.value })
                                     }}></ElementInput>
                             )}
-                            rules={{ required: 'phoneNo required' }}
+                            rules={{ required: true }}
                         />
-
                     </div>
                 </DialogContent>
+
                 <DialogActions>
                     <div className='spacing'>
                         {!isUserCreateAndUpdate ? (
@@ -118,11 +118,10 @@ const CreateUser = ({ user, updateForm, createUser, isUserCreateAndUpdate, setUs
                     </div>
                 </DialogActions>
             </Dialog>
-
             <div>
                 {!isUserGetAndDeleteLoading ? '' : <Spinner animation='border' variant="primary" />}
             </div>
-        </div>
+        </div >
     )
 }
 
