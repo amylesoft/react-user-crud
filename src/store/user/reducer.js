@@ -12,7 +12,9 @@ const initialState = {
     users: [],
     isUserGetAndDeleteLoading: false,
     isUserCreateAndUpdateLoading: false,
-    isUserAddDialogVisible: false
+    isUserAddDialogVisible: false,
+    cricket: false,
+
 }
 
 const reducer = (state = initialState, action) => {
@@ -23,6 +25,10 @@ const reducer = (state = initialState, action) => {
                 ...state.userForm,
                 [action.key]: action.value
             }
+        }
+        case ActionTypes.IS_SELECT_CHECKBOX: return {
+            ...state,
+            cricket: action.value
         }
         case ActionTypes.IS_USER_GET_AND_DELETE_LOADING: return {
             ...state,

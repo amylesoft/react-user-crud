@@ -77,3 +77,9 @@ export const isUserAddDialogVisible = (dialog) => {
         dialog: dialog
     }
 }
+export const isSelectCheckBox = (value) => {
+    return {
+        type: actionTypes.IS_SELECT_CHECKBOX,
+        value: value
+    }
+}

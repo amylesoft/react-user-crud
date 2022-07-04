@@ -1,6 +1,6 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import '../../styles/pages/App.scss';
+import '../../../styles/pages/App.scss';
 import { TextField } from '@mui/material';
 
 const ElementInput = (props) => {

@@ -13,7 +13,8 @@ const actionTypes = {
     UPDATE_USER_SUCCESSFULLY: 'update_user_for_array',
     IS_USER_GET_AND_DELETE_LOADING: 'is_user_get_and_delete_loading',
     IS_USER_CREATE_AND_UPDATE_LOADING: 'is_user_create_and_update_loading',
-    IS_DIALOG_OPEN_AND_CLOSE: 'is_dialog_open_and_close'
+    IS_DIALOG_OPEN_AND_CLOSE: 'is_dialog_open_and_close',
+    IS_SELECT_CHECKBOX: 'is_select_checkbox'
 }
 
 export default actionTypes;
