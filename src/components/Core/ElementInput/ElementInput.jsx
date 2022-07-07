@@ -6,7 +6,6 @@ import { TextField } from '@mui/material';
 const ElementInput = (props) => {
 
     return (
-
         <div>
             <TextField
                 name={props.name}

@@ -8,7 +8,7 @@ import DialogContent from '@mui/material/DialogContent';
 import actionTypes from '../../store/user/types';
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import ElementInput from "../Core/ElementInput"
+import ElementInput from "./../Core/ElementInput/ElementInput"
 import Spinner from 'react-bootstrap/Spinner';
 import * as yup from "yup";
 import LoadingButton from '@mui/lab/LoadingButton'
@@ -18,7 +18,7 @@ const schema = yup.object({
     firstName: yup.string().required(),
     lastName: yup.string().required(),
     phoneNo: yup.string().required('phoneNo is a required field').matches(/^[0-9]{8,12}$/, 'minimun 8 and maximum 12 number').min(8, 'minimum 8 number required').max(12, 'maximum 12 number required'),
-    cricket: yup.boolean().isTrue()
+    cricket: yup.boolean()
 });
  
 const CreateUser = ({ user, updateForm, createUser, isUserCreateAndUpdate, setUserForm, isUserGetAndDeleteLoading, isUserCreateAndUpdateLoading, isUserAddDialogVisible, dialogOpenAndClose, cricket, updateCheckbox }) => {
